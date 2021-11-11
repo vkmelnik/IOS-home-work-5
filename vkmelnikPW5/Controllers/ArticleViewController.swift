@@ -16,6 +16,7 @@ class ArticleViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupArticleView()
+        setupArticleManager()
     }
     
     func setupArticleView() {
@@ -31,12 +32,21 @@ class ArticleViewController: UIViewController {
         self.articleView = articleView
     }
 
+    func setupArticleManager() {
+        articleManager.observer = self
+        articleManager.Articles.append(ArticleModel(title: "Title1", description: "Description1", imageLink: nil, articleLink: nil))
+    }
+}
 
+extension ArticleViewController: ArticleManagerObserver {
+    func updateArticles() {
+        articleView?.tableView?.reloadData()
+    }
 }
 
 extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return articleManager.Articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

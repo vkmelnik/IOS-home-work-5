@@ -7,17 +7,17 @@
 
 import Foundation
 
+protocol ArticleManagerObserver {
+    func updateArticles()
+}
+
 // Class that contains articles and manages their logic.
 class ArticleManager {
-    private var articles: [ArticleModel] = []
+    var observer: ArticleManagerObserver?
     
-    public var Articles: [ArticleModel] {
-        get {
-            return articles
-        }
-        
-        set {
-            articles = newValue
+    public var Articles: [ArticleModel] = [] {
+        didSet {
+            observer?.updateArticles()
         }
     }
 }

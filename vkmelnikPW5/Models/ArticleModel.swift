@@ -11,6 +11,20 @@ import Foundation
 struct ArticleModel {
     var title: String
     var description: String
-    var imageLink: URL
-    var articleLink: URL
+    var imageLink: URL?
+    var articleLink: URL?
+    
+    init() {
+        title = "Article title"
+        description = "No description"
+        imageLink = nil
+        articleLink = nil
+    }
+    
+    init(title: String, description: String, imageLink: URL?, articleLink: URL?) {
+        self.title = title
+        self.description = description
+        self.imageLink = imageLink
+        self.articleLink = articleLink
+    }
 }
