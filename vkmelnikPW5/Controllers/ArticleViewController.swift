@@ -63,10 +63,12 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel?.text = articleManager.Articles[indexPath.row].title
         cell.descriptionLabel?.text = articleManager.Articles[indexPath.row].announce
         DispatchQueue.global().async {
+            DispatchQueue.main.sync {
+                cell.startAnimations()
+            }
             let image = self.articleManager.Articles[indexPath.row].loadImage()
             DispatchQueue.main.sync {
-                cell.image?.image = image
-                cell.updateUI()
+                cell.setImage(image: image)
             }
         }
         return cell

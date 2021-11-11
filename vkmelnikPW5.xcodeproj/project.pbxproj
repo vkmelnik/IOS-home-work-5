@@ -75,11 +75,11 @@
 				1248C911273D34340007CBF8 /* Models */,
 				1248C8FB273D2E310007CBF8 /* AppDelegate.swift */,
 				1248C8FD273D2E310007CBF8 /* SceneDelegate.swift */,
+				1248C920273D6F390007CBF8 /* ImageExtensions.swift */,
 				1248C904273D2E340007CBF8 /* Assets.xcassets */,
 				1248C906273D2E340007CBF8 /* LaunchScreen.storyboard */,
 				1248C909273D2E340007CBF8 /* Info.plist */,
 				1248C912273D34920007CBF8 /* UIView_Pin.swift */,
-				1248C920273D6F390007CBF8 /* ImageExtensions.swift */,
 			);
 			path = vkmelnikPW5;
 			sourceTree = "<group>";

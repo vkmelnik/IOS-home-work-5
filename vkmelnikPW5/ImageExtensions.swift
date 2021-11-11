@@ -44,3 +44,27 @@ extension UIImage {
         return makeDark(color: result)
     }
 }
+
+extension UIView {
+    func startShimmer() {
+        let gradientColorOne : CGColor = UIColor(white: 0.70, alpha: 0.5).cgColor
+        let gradientColorTwo : CGColor = UIColor(white: 0.95, alpha: 0.5).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+          
+        gradientLayer.frame = self.bounds
+
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientLayer.colors = [gradientColorOne, gradientColorTwo,   gradientColorOne]
+        gradientLayer.locations = [0.0, 0.5, 1.0]
+        self.layer.addSublayer(gradientLayer)
+        
+        let animation = CABasicAnimation(keyPath: "locations")
+        animation.fromValue = [-1.0, -0.5, 0.0]
+        animation.toValue = [1.0, 1.5, 2.0]
+        animation.duration = 0.9
+        animation.repeatCount = .infinity
+        gradientLayer.add(animation, forKey: animation.keyPath)
+    }
+}

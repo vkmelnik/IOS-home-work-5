@@ -14,7 +14,8 @@ class ArticleCell: UITableViewCell {
     var descriptionLabel: UILabel?
     var previewView: UIView?
     var labelsView: UIView?
-    var image: UIImageView?
+    private var image: UIImageView?
+    private var underImage: UIView?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -81,6 +82,13 @@ class ArticleCell: UITableViewCell {
     }
     
     private func setupImage() {
+        let underImage = UIView()
+        previewView!.addSubview(underImage)
+        underImage.pinTop(to: previewView!)
+        underImage.pinBottom(to: labelsView!.topAnchor)
+        underImage.pinLeft(to: previewView!)
+        underImage.pinRight(to: previewView!)
+        self.underImage = underImage
         let image = UIImageView()
         previewView!.addSubview(image)
         image.pinTop(to: previewView!)
@@ -92,8 +100,13 @@ class ArticleCell: UITableViewCell {
         self.image = image
     }
     
-    func updateUI() {
-        labelsView?.backgroundColor = image?.image?.areaAverage()
+    func startAnimations() {
+        self.underImage?.startShimmer()
+    }
+    
+    func setImage(image: UIImage?) {
+        self.image?.image = image
+        labelsView?.backgroundColor = self.image?.image?.areaAverage()
     }
 
     override func awakeFromNib() {
