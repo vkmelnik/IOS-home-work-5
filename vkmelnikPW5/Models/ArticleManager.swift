@@ -14,6 +14,7 @@ protocol ArticleManagerObserver {
 // Class that contains articles and manages their logic.
 class ArticleManager {
     var observer: ArticleManagerObserver?
+    private var currentPage: Int = 1
     
     public var Articles: [ArticleModel] = [] {
         didSet {
@@ -27,8 +28,8 @@ class ArticleManager {
     }
     
     // MARK: - Fetch news
-    private func fetchNews() {
-        guard let url = getURL(4, 1) else { return }
+    private func fetchNews(page: Int) {
+        guard let url = getURL(4, page) else { return }
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             if let error = error {
                 print(error)
@@ -38,12 +39,17 @@ class ArticleManager {
                 var articlePage = try?
                     JSONDecoder().decode(ArticlePage.self, from: data)
                 articlePage?.passTheRequestId()
-                self?.Articles = (articlePage?.news)!
+                self?.Articles.append(contentsOf: (articlePage?.news)!)
             }
         }.resume()
     }
     
     public func loadNews() {
-        fetchNews()
+        fetchNews(page: 1)
+    }
+    
+    public func loadMore() {
+        currentPage += 1
+        fetchNews(page: currentPage)
     }
 }

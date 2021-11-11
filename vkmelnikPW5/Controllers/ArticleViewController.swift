@@ -102,4 +102,12 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [action])
     }
     
+    // Load more articles if user has scrolled all articles.
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == tableView.numberOfSections - 1 &&
+            indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            articleManager.loadMore()
+        }
+    }
+    
 }
