@@ -15,6 +15,7 @@
 		1248C910273D33D20007CBF8 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C90F273D33D20007CBF8 /* ArticleModel.swift */; };
 		1248C913273D34930007CBF8 /* UIView_Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C912273D34920007CBF8 /* UIView_Pin.swift */; };
 		1248C917273D35430007CBF8 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C916273D35430007CBF8 /* ArticleView.swift */; };
+		1248C919273D37EE0007CBF8 /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C918273D37EE0007CBF8 /* ArticleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1248C90F273D33D20007CBF8 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		1248C912273D34920007CBF8 /* UIView_Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Pin.swift; sourceTree = "<group>"; };
 		1248C916273D35430007CBF8 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		1248C918273D37EE0007CBF8 /* ArticleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				1248C90F273D33D20007CBF8 /* ArticleModel.swift */,
+				1248C918273D37EE0007CBF8 /* ArticleManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1248C919273D37EE0007CBF8 /* ArticleManager.swift in Sources */,
 				1248C900273D2E310007CBF8 /* ArticleViewController.swift in Sources */,
 				1248C917273D35430007CBF8 /* ArticleView.swift in Sources */,
 				1248C8FC273D2E310007CBF8 /* AppDelegate.swift in Sources */,
