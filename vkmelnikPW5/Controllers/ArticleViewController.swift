@@ -73,4 +73,28 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(webView, animated: true)
     }
     
+    private func shareArticle(article: ArticleModel?) {
+        let textToShare = "This link is sent from news app for ios development homework."
+
+        if let myWebsite = article?.articleUrl {
+            let objectsToShare = [textToShare, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                    
+            activityVC.popoverPresentationController?.sourceView = articleView
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal,
+                                        title: "Share") { [weak self] (action, view, completionHandler) in
+            self?.shareArticle(article: self?.articleManager.Articles[indexPath.row])
+                                            completionHandler(true)
+        }
+        action.backgroundColor = .systemBlue
+        action.image = UIImage(systemName: "arrowshape.turn.up.right")
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
 }
