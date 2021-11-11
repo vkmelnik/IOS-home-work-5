@@ -25,4 +25,11 @@ struct ArticleModel: Decodable {
         return URL(string: "https://news.myseldon.com/ru/news/index/\(newsId)?requestId=\(requestId)"
         )
     }
+    
+    private func loadImage() -> UIImage? {
+        guard let data = try? Data(contentsOf: (img?.url)!) else {
+            return nil
+        }
+        return UIImage(data: data)
+    }
 }
