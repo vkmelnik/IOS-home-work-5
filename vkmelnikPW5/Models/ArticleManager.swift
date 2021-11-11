@@ -42,4 +42,8 @@ class ArticleManager {
             }
         }.resume()
     }
+    
+    public func loadNews() {
+        fetchNews()
+    }
 }

@@ -29,17 +29,23 @@ class ArticleViewController: UIViewController {
         articleView.configure()
         articleView.tableView?.delegate = self
         articleView.tableView?.dataSource = self
+        articleView.tableView?.register(ArticleCell.self, forCellReuseIdentifier: "ArticleCell")
         self.articleView = articleView
     }
 
     func setupArticleManager() {
         articleManager.observer = self
+        DispatchQueue.global().async {
+            self.articleManager.loadNews()
+        }
     }
 }
 
 extension ArticleViewController: ArticleManagerObserver {
     func updateArticles() {
-        articleView?.tableView?.reloadData()
+        DispatchQueue.main.sync {
+            articleView?.tableView?.reloadData()
+        }
     }
 }
 
@@ -49,8 +55,16 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = ArticleCell()
+        cell.titleLabel?.text = articleManager.Articles[indexPath.row].title
+        cell.descriptionLabel?.text = articleManager.Articles[indexPath.row].announce
+        DispatchQueue.global().async {
+            let image = self.articleManager.Articles[indexPath.row].loadImage()
+            DispatchQueue.main.sync {
+                cell.image?.image = image
+            }
+        }
+        return cell
     }
-    
     
 }

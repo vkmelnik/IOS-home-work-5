@@ -14,7 +14,7 @@ class ArticleView: UIView {
     
     func configure(){
         tableView = UITableView()
-        tableView?.backgroundColor = .yellow
+        tableView?.rowHeight = 250
         addSubview(tableView!)
         tableView?.pin(to: self)
     }

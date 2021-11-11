@@ -26,7 +26,7 @@ struct ArticleModel: Decodable {
         )
     }
     
-    private func loadImage() -> UIImage? {
+    func loadImage() -> UIImage? {
         guard let data = try? Data(contentsOf: (img?.url)!) else {
             return nil
         }

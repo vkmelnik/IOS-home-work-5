@@ -28,12 +28,14 @@ class ArticleCell: UITableViewCell {
         self.addSubview(titleLabel)
         titleLabel.pinTop(to: self)
         titleLabel.pinLeft(to: self)
+        titleLabel.setHeight(to: 20)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
         
         let descriptionLabel = UILabel()
         self.addSubview(descriptionLabel)
-        descriptionLabel.pinTop(to: descriptionLabel.bottomAnchor)
+        descriptionLabel.pinTop(to: titleLabel.bottomAnchor)
         descriptionLabel.pinLeft(to: self)
+        descriptionLabel.setHeight(to: 20)
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         
         let image = UIImageView()
@@ -42,6 +44,7 @@ class ArticleCell: UITableViewCell {
         image.pinBottom(to: self.bottomAnchor)
         image.pinLeft(to: self)
         image.pinRight(to: self)
+        image.contentMode = .scaleAspectFit
         
         self.titleLabel = titleLabel
         self.descriptionLabel = descriptionLabel
