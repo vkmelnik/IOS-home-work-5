@@ -12,6 +12,8 @@ class ArticleCell: UITableViewCell {
     
     var titleLabel: UILabel?
     var descriptionLabel: UILabel?
+    var previewView: UIView?
+    var labelsView: UIView?
     var image: UIImageView?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -23,32 +25,75 @@ class ArticleCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func setupCell() {
+    private func setupCell() {
+        let previewView = UIView()
+        self.backgroundColor = .clear
+        previewView.backgroundColor = .black
+        previewView.layer.cornerRadius = 10
+        previewView.layer.masksToBounds = true
+        self.addSubview(previewView)
+        previewView.pinTop(to: self, 10)
+        previewView.pinBottom(to: self, 10)
+        previewView.pinLeft(to: self, 10)
+        previewView.pinRight(to: self, 10)
+        self.previewView = previewView
+        
+        setupLabels()
+        setupImage()
+        selectionStyle = .none
+    }
+    
+    private func setupLabels() {
+        let labelsView = UIView()
+        previewView?.addSubview(labelsView)
+        labelsView.backgroundColor = .darkGray
+        labelsView.pinBottom(to: previewView!)
+        labelsView.pinLeft(to: previewView!)
+        labelsView.pinRight(to: previewView!)
+        labelsView.setHeight(to: 100)
+        self.labelsView = labelsView
+        
         let titleLabel = UILabel()
-        self.addSubview(titleLabel)
-        titleLabel.pinTop(to: self)
-        titleLabel.pinLeft(to: self)
-        titleLabel.setHeight(to: 20)
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        labelsView.addSubview(titleLabel)
+        titleLabel.pinTop(to: labelsView, 10)
+        titleLabel.pinLeft(to: labelsView, 10)
+        titleLabel.pinRight(to: labelsView, 10)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+        titleLabel.textColor = .white
+        titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
         
         let descriptionLabel = UILabel()
-        self.addSubview(descriptionLabel)
+        labelsView.addSubview(descriptionLabel)
         descriptionLabel.pinTop(to: titleLabel.bottomAnchor)
-        descriptionLabel.pinLeft(to: self)
-        descriptionLabel.setHeight(to: 20)
+        descriptionLabel.pinLeft(to: labelsView, 10)
+        descriptionLabel.pinBottom(to: labelsView, 10)
+        descriptionLabel.pinRight(to: labelsView, 10)
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
-        
-        let image = UIImageView()
-        self.addSubview(image)
-        image.pinTop(to: descriptionLabel.bottomAnchor)
-        image.pinBottom(to: self.bottomAnchor)
-        image.pinLeft(to: self)
-        image.pinRight(to: self)
-        image.contentMode = .scaleAspectFit
+        descriptionLabel.textColor = .white
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.textAlignment = .center
         
         self.titleLabel = titleLabel
         self.descriptionLabel = descriptionLabel
+    }
+    
+    private func setupImage() {
+        let image = UIImageView()
+        previewView!.addSubview(image)
+        image.pinTop(to: previewView!)
+        image.pinBottom(to: labelsView!.topAnchor)
+        image.pinLeft(to: previewView!)
+        image.pinRight(to: previewView!)
+        image.contentMode = .scaleAspectFill
+        image.layer.masksToBounds = true
         self.image = image
+    }
+    
+    func updateUI() {
+        labelsView?.backgroundColor = image?.image?.areaAverage()
     }
 
     override func awakeFromNib() {

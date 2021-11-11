@@ -15,6 +15,10 @@ class ArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        title = "News"
+        view.backgroundColor = .black
         setupArticleView()
         setupArticleManager()
     }
@@ -62,6 +66,7 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
             let image = self.articleManager.Articles[indexPath.row].loadImage()
             DispatchQueue.main.sync {
                 cell.image?.image = image
+                cell.updateUI()
             }
         }
         return cell
@@ -92,7 +97,7 @@ extension ArticleViewController: UITableViewDelegate, UITableViewDataSource {
             self?.shareArticle(article: self?.articleManager.Articles[indexPath.row])
                                             completionHandler(true)
         }
-        action.backgroundColor = .systemBlue
+        action.backgroundColor = .black
         action.image = UIImage(systemName: "arrowshape.turn.up.right")
         return UISwipeActionsConfiguration(actions: [action])
     }

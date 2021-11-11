@@ -19,6 +19,7 @@
 		1248C91B273D3E0B0007CBF8 /* ArticlePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C91A273D3E0B0007CBF8 /* ArticlePage.swift */; };
 		1248C91D273D41DE0007CBF8 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C91C273D41DE0007CBF8 /* ArticleCell.swift */; };
 		1248C91F273D60520007CBF8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C91E273D60520007CBF8 /* WebViewController.swift */; };
+		1248C921273D6F390007CBF8 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1248C920273D6F390007CBF8 /* ImageExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1248C91A273D3E0B0007CBF8 /* ArticlePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePage.swift; sourceTree = "<group>"; };
 		1248C91C273D41DE0007CBF8 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		1248C91E273D60520007CBF8 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1248C920273D6F390007CBF8 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				1248C906273D2E340007CBF8 /* LaunchScreen.storyboard */,
 				1248C909273D2E340007CBF8 /* Info.plist */,
 				1248C912273D34920007CBF8 /* UIView_Pin.swift */,
+				1248C920273D6F390007CBF8 /* ImageExtensions.swift */,
 			);
 			path = vkmelnikPW5;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			files = (
 				1248C919273D37EE0007CBF8 /* ArticleManager.swift in Sources */,
 				1248C900273D2E310007CBF8 /* ArticleViewController.swift in Sources */,
+				1248C921273D6F390007CBF8 /* ImageExtensions.swift in Sources */,
 				1248C917273D35430007CBF8 /* ArticleView.swift in Sources */,
 				1248C91F273D60520007CBF8 /* WebViewController.swift in Sources */,
 				1248C8FC273D2E310007CBF8 /* AppDelegate.swift in Sources */,
