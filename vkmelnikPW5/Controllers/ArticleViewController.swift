@@ -34,7 +34,6 @@ class ArticleViewController: UIViewController {
 
     func setupArticleManager() {
         articleManager.observer = self
-        articleManager.Articles.append(ArticleModel(title: "Title1", description: "Description1", imageLink: nil, articleLink: nil))
     }
 }
 

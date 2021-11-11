@@ -5,26 +5,24 @@
 //  Created by Vsevolod Melnik on 11.11.2021.
 //
 
-import Foundation
+import UIKit
+
+struct ImageContainer: Decodable {
+    var url: URL?
+}
 
 // Struct that contains information about article.
-struct ArticleModel {
-    var title: String
-    var description: String
-    var imageLink: URL?
-    var articleLink: URL?
+struct ArticleModel: Decodable {
+    var newsId: Int?
+    var title: String?
+    var announce: String?
+    var img: ImageContainer?
+    var requestId: String?
     
-    init() {
-        title = "Article title"
-        description = "No description"
-        imageLink = nil
-        articleLink = nil
-    }
-    
-    init(title: String, description: String, imageLink: URL?, articleLink: URL?) {
-        self.title = title
-        self.description = description
-        self.imageLink = imageLink
-        self.articleLink = articleLink
+    var articleUrl: URL? {
+        let requestId = requestId ?? ""
+        let newsId = newsId ?? 0
+        return URL(string: "https://news.myseldon.com/ru/news/index/\(newsId)?requestId=\(requestId)"
+        )
     }
 }
